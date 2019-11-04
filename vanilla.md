@@ -1,4 +1,4 @@
-# Using a vanilla Linux kernel with Intel Edison {#using-a-vanilla-linux-kernel-with-intel-edison 
+# Using a vanilla Linux kernel with Intel Edison
 
 The Linux kernel used in that build is version 3.10.17 which is patched
 with a gigantic 150000+ lines patch to add drivers necessary for the
@@ -18,7 +18,7 @@ The author, [Andy Shevchenko](http://habrahabr.ru/users/andy_shev/)
 have managed to boot the [Edison](https://edison.internet-share.com/wiki/Edison)
 using the latest vanilla Linux kernel without using any of the patches.
 
-I decided to try to replicate Andy\'s effort in order to gain more
+I decided to try to replicate Andy's effort in order to gain more
 knowledge of the inner workings of the [Edison](https://edison.internet-share.com/wiki/Edison)
 and to have a platform/framework to port remaining drivers.
 
@@ -33,12 +33,12 @@ git clone <git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git>
 ```
 
 After a considerable time (my Internet sucks big time), I created a
-copy of the original [[i386\_defconfig]:
+copy of the original [[i386_defconfig]:
 
 ```
- cp arch/x86/configs/{i386,edison}\_defconfig
+ cp arch/x86/configs/{i386,edison}_defconfig
 ```
-Next, edit the `arch/x86/configs/edison\_defconfig` to contain
+Next, edit the `arch/x86/configs/edison_defconfig` to contain
 the following:
 ```
     # CONFIG_DRM_I915 is not set
@@ -75,7 +75,7 @@ To enable 64-bit build in Linux kernel v4.4 [the patch](http://www.spinics.net/l
 should be applied.
 
 ```
-Linux buildroot 4.4.0-next-20160115+ #25 SMP Fri Jan 15 22:03:19 EET 2016 x86\_64 GNU/Linux
+Linux buildroot 4.4.0-next-20160115+ #25 SMP Fri Jan 15 22:03:19 EET 2016 x86_64 GNU/Linux
 ```
 
 NOTE: To run it directly from U-Boot one has to update it to at least
@@ -126,7 +126,7 @@ following:
 Finally, build the root filesystem:
 
 ```
-    $ make edison\_defconfig
+    $ make edison_defconfig
     $ make
 ```
 
@@ -726,7 +726,7 @@ What is in upstream (in order of appearance):
   * I2C (v4.8)
   * Pinctrl and GPIO drivers are in upstream (v4.8)
   * SPI in PIO mode (v4.8)
-  * Wi-Fi is working, at least it connects to open networks where I\'m able to
+  * Wi-Fi is working, at least it connects to open networks where I'm able to
     ping and get some data from server (v4.9)
   * SD card detection and SD card interface are enabled (v4.9)
   * intel_idle (v4.10)

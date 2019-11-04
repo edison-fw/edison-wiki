@@ -1,20 +1,19 @@
 #U-Boot
-From Intel Edison Wiki
 
-This page is about upgrading U-Boot on Intel Edison. The goal is to get Intel Edison supported by U-Boot out-of-the-box. We are anticipating Intel Edison support in **v2017.0**9 out-of-the-box.
+This page is about upgrading U-Boot on Intel Edison. The goal is to get Intel Edison supported by U-Boot out-of-the-box. We are anticipating Intel Edison support in **v2017.09** out-of-the-box.
 
 
 **UPDATE**
 
 So, U-Boot **v2017.09** is out. It supports Intel Edison out of the box. Thus, this page is kinda in a freeze state from now on. Use my Github page to report an issue, if any, or send any of your concerns directly to upstream.
 
-The task I'm working on now is to bring [ACPI](https://edison.internet-share.com/wiki/ACPI) support for Edison board. Minimum support is available starting from **v2017.11-rc2**.
+The task I'm working on now is to bring [ACPI](acpi) support for Edison board. Minimum support is available starting from **v2017.11-rc2**.
 
 ## New version
 
 I would like to announce I'm able to build and flash latest U-Boot (**v2016.11**) on Edison which allows me to boot x86_64 kernel directly! So, the links:
 
-  * [Using a vanilla Linux kernel with Intel Edison](https://edison.internet-share.com/wiki/Using_a_vanilla_Linux_kernel_with_Intel_Edison)
+  * [Using a vanilla Linux kernel with Intel Edison](vanilla)
   * [U-Boot Git tree](https://github.com/andy-shev/u-boot/tree/edison)
   * [Linux kernel Git tree](https://github.com/andy-shev/linux/tree/eds)
 

@@ -1,5 +1,5 @@
-
 #Original Yocto Kernel Config
+
 Here is the original kernel 3.10.17 config:
 ```
 #

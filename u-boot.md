@@ -1,7 +1,10 @@
 #Intel Edison
+
 ##Using Intel's Stuff
-[Best walk-through is [here](http://shawnhymel.com/585/creating-a-custom-linux-kernel-for-the-edison/)
+Best walk-through is [here](http://shawnhymel.com/585/creating-a-custom-linux-kernel-for-the-edison/)
+
 ## Device Data
+
 ### Partition Table
 ```
 boot > part list mmc 0

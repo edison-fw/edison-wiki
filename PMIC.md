@@ -1,10 +1,10 @@
-#PMIC
+# PMIC
 
-##ADC
+## ADC
 
 Basin Cove PMIC contains a 10-bits ADC with 9 channels.
 
-###The environment
+### The environment
 
 What each input measures.
 
