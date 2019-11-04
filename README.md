@@ -9,11 +9,11 @@ If you would like to contribute fork this repo now, edit on github (or locally i
 
 This README serves as the home page for this wiki. Please manually add a link to new pages here, we do not have automatic ToC generation.
 
-[Linux 4.0.x on Intel Edison](linux4)
-[Custom kernel walkthrough and Device data](u-boot)
-[Original Yocto Kernel Config](orig-conf)
-[Upgrading U-Boot](u-boot-update)
-[Using a vanilla Linux kernel with Intel Edison](vanilla)
-[Enabling ACPI on Edison through U-Boot](acpi)
-[GPIO controller related notes on ACPI-enabled Intel Edison board](acpi-gpio)
-[Basin Cove PMIC investigation](PMIC)
+[Linux 4.0.x on Intel Edison](linux4)  
+[Custom kernel walkthrough and Device data](u-boot)  
+[Original Yocto Kernel Config](orig-conf)  
+[Upgrading U-Boot](u-boot-update)  
+[Using a vanilla Linux kernel with Intel Edison](vanilla)  
+[Enabling ACPI on Edison through U-Boot](acpi)  
+[GPIO controller related notes on ACPI-enabled Intel Edison board](acpi-gpio)  
+[Basin Cove PMIC investigation](PMIC)  
