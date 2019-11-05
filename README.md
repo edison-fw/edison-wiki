@@ -1,4 +1,5 @@
 # edison-wiki
+
 Here we try to salvage the pages from https://edison.internet-share.com/wiki/Main_Page which is no longer alive.
 
 The subject is any information related to investigating the Intel Edison kernel, U-Boot, SoC hardware, ACPI, tools to build the image etc.
