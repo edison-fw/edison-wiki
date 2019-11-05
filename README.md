@@ -17,3 +17,4 @@ This README serves as the home page for this wiki. Please manually add a link to
 [Enabling ACPI on Edison through U-Boot](acpi)  
 [GPIO controller related notes on ACPI-enabled Intel Edison board](acpi-gpio)  
 [Basin Cove PMIC investigation](PMIC)  
+[Edison/Arduino notes](arduino)
