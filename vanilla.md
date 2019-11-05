@@ -2,12 +2,12 @@
 
 The Linux kernel used in that build is version 3.10.17 which is patched
 with a gigantic 150000+ lines patch to add drivers necessary for the
-[Edison](https://edison.internet-share.com/wiki/Edison).
+[Edison](https://edison-fw.github.io/meta-intel-edison/).
 Unfortunately, by now, the 3.10.17 kernel is rather old and lacking
-features that [Ionic](https://edison.internet-share.com/wiki/Ionic)/[OpenWrt](https://edison.internet-share.com/wiki/OpenWrt) rely upon.
+features that Ionic/OpenWrt] rely upon.
 
 The first step in porting Ionic/OpenWrt to the Intel®
-[Edison](https://edison.internet-share.com/wiki/Edison) is therefor getting a newer kernel running on the Edison. Searching Google, I came across this site:
+[Edison](https://edison-fw.github.io/meta-intel-edison/) is therefor getting a newer kernel running on the Edison. Searching Google, I came across this site:
 
 <https://habrahabr.ru/post/254247/>
 
@@ -15,11 +15,11 @@ Unfortunately it is all in Russian --- of which I understand very little
 --- but with a little help from Google Translate it looked promising.
 
 The author, [Andy Shevchenko](https://habrahabr.ru/users/andy_shev/)
-have managed to boot the [Edison](https://edison.internet-share.com/wiki/Edison)
+have managed to boot the [Edison](https://edison-fw.github.io/meta-intel-edison/)
 using the latest vanilla Linux kernel without using any of the patches.
 
 I decided to try to replicate Andy's effort in order to gain more
-knowledge of the inner workings of the [Edison](https://edison.internet-share.com/wiki/Edison)
+knowledge of the inner workings of the [Edison](https://edison-fw.github.io/meta-intel-edison/)
 and to have a platform/framework to port remaining drivers.
 
 ## Kernel
@@ -71,7 +71,7 @@ processors/cores available on the build system.
 ### 64-bit mode
 
 Intel Atom, which is installed on Intel Edison, is known x86_64 CPU.
-To enable 64-bit build in Linux kernel v4.4 [the patch](https://www.spinics.net/lists/kernel/msg2163592.html)[
+To enable 64-bit build in Linux kernel v4.4 [the patch](https://www.spinics.net/lists/kernel/msg2163592.html)
 should be applied.
 
 ```
@@ -138,9 +138,9 @@ After a while, the resulting image is available as:
 
 which is roughly 1.6 MB of size.
 
-## Copying file to [Edison](https://edison.internet-share.com/wiki/Edison)
+## Copying file to [Edison](https://edison-fw.github.io/meta-intel-edison/)
 
-Before restarting the [Edison](https://edison.internet-share.com/wiki/Edison)[
+Before restarting the [Edison](https://edison-fw.github.io/meta-intel-edison/)
 while still running the original Intel® provided firmware, create a FAT
 file system on device 0:9. (If you don't, and save files on the
 originally-available file system, they will not be visible from U-Boot.)
@@ -149,10 +149,10 @@ originally-available file system, they will not be visible from U-Boot.)
     # mkfs.vfat -F32 -I /dev/mmcblk0p9
 ```
 
-Reboot the [Edison](https://edison.internet-share.com/wiki/Edison)[.
+Reboot the [Edison](https://edison-fw.github.io/meta-intel-edison/).
 
 
-Mount the [Edison](https://edison.internet-share.com/wiki/Edison)'s
+Mount the [Edison](https://edison-fw.github.io/meta-intel-edison/)'s
 now-visible drive on the host computer.
 
 Copy the just-built Linux image and root file system to the Edison
@@ -174,7 +174,7 @@ few variables in the U-Boot environment:
     setenv load_edsboot 'load mmc 0:9 0x100000 vmlinuz.efi; load mmc 0:9 0x3000000 initrd'
 ```
 
-The [Edison](https://edison.internet-share.com/wiki/Edison)
+The [Edison](https://edison-fw.github.io/meta-intel-edison/)
 device will still boot as normal, but *if* the normal boot
 is interrupted by pressing a key during boot (at the right time), it is
 now possible to boot the new system:
@@ -200,7 +200,7 @@ boot > run bootcmd_edsboot
 The older U-Boot doesn't support kernels starting from v4.7. Read some
 details here [Intel Edison does not work on Linux 4.7+kernels](https://github.com/andy-shev/linux/issues/3).
 
-Newer [U-Boot](https://edison.internet-share.com/wiki/U-Boot)
+Newer [U-Boot](u-boot-update)
 is located in edison branch of my [repository on
 GitHub](https://github.com/andy-shev/u-boot/tree/edison).
 
@@ -688,12 +688,12 @@ automatically when needed.
 
 Starving for volunteers:
 
-  * [ACPI for Edison](https://edison.internet-share.com/wiki/ACPI)
+  * [ACPI for Edison](acpi)
     (U-Boot support)
 
 Current work in progress covers:
 
-  * [ACPI for Edison](https://edison.internet-share.com/wiki/ACPI)[
+  * [ACPI for Edison](acpi)
     (U-Boot and kernel support)
 
 Low priority:
@@ -703,7 +703,7 @@ Low priority:
   * ~~MCU / Zephyr (if even possible)~~ It's not possible AFAIK without Intel
     involvement. For now considering just forward port of MCU
     application loader
-  * P-Unit (to power off unused IPs in North Complex, such as GPU, Camera)[]{.odfLiEnd} 
+  * P-Unit (to power off unused IPs in North Complex, such as GPU, Camera)
 
 Rather never will be done (anyone who would like to do this?):
 
@@ -737,7 +737,7 @@ What is in upstream (in order of appearance):
   * RTC support (v4.11-rc1)
   * Bluetooth, requires testing and debugging existing bugs (v4.12-rc1)
   * Enabling TI ADS7951 A/DC connected to SPI on Edison/Arduino (v4.14-rc1). Note,
-    it requires ACPI-enabled platform.[]{.odfLiEnd} 
+    it requires ACPI-enabled platform.
 
 Thread about progress on Intel Communities site: [Newer Kernel on
 Edison (OpenWrt)](https://communities.intel.com/thread/75472).
@@ -746,9 +746,9 @@ Edison (OpenWrt)](https://communities.intel.com/thread/75472).
 ## Conclusion
 
 This shows that it is possible to run vanilla Linux kernel on the
-[Edison](https://edison.internet-share.com/wiki/Edison).
+[Edison](https://edison-fw.github.io/meta-intel-edison/).
 It might not support all the peripherals that are available on the
-[Edison](https://edison.internet-share.com/wiki/Edison)
+[Edison](https://edison-fw.github.io/meta-intel-edison/)
 (eMMC, i2c, i2s, spi etc.), but it is possible to boot and obtain a
 serial console showing the kernel output, and that is a pretty darn good
 start of porting the remaining drivers.
