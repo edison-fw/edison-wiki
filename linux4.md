@@ -1,10 +1,9 @@
 # Linux 4.0.x on Intel Edison
-Linux 4.1 have been officially released, so rather than continuing down along this path, focus have been moved to [vanilla Linux kernel](https://edison.internet-share.com/wiki/Using_a_vanilla_Linux_kernel_with_Intel_Edison)
+Linux 4.1 have been officially released, so rather than continuing down along this path, focus have been moved to [vanilla Linux kernel](vanilla)
 
-As described on [this page](https://edison.internet-share.com/wiki/Using_a_vanilla_Linux_kernel_with_Intel_Edison) it is possible to boot the Intel® [Edison](https://edison.internet-share.com/wiki/Edison) using a vanilla Linux kernel rather than the old kernel used in the [Yocto](https://edison.internet-share.com/w/index.php?title=Yocto&action=edit&redlink=1) builds. Unfortunately that kernel is a release candidate. Ideally, the [Edison](https://edison.internet-share.com/wiki/Edison) should boot using the latest stable kernel, which at the time of writing is the 4.0 series (I think 4.0.3, but who's counting). 
+As described on [this page](vanilla) it is possible to boot the Intel® [Edison](https://edison-fw.github.io/meta-intel-edison/) using a vanilla Linux kernel rather than the factory kernel used in the Yocto builds. Unfortunately that kernel is a release candidate. Ideally, the [Edison](https://edison-fw.github.io/meta-intel-edison/) should boot using the latest stable kernel, which at the time of writing is the 4.0 series (I think 4.0.3, but who's counting).
 
-[Ionic](https://edison.internet-share.com/wiki/Ionic) [OpenWrt](https://edison.internet-share.com/wiki/OpenWrt) 
-is constantly being updated to use the latest kernels, so this page focuses on the changed/patches necessary to get a 4.0 kernel running on the [Edison](https://edison.internet-share.com/wiki/Edison).
+Ionic and OpenWrt are constantly being updated to use the latest kernels, so this page focuses on the changed/patches necessary to get a 4.0 kernel running on the [Edison](https://edison-fw.github.io/meta-intel-edison/).
 
 ##Serial Console
 
