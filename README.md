@@ -11,7 +11,7 @@ This README serves as the home page for this wiki. Please manually add a link to
 
 [Linux 4.0.x on Intel Edison](linux4)  
 [Custom kernel walkthrough and Device data](u-boot)  
-[Original Yocto Kernel Config](orig-conf)  
+[Original Yocto Kernel Config](orig-config)  
 [Upgrading U-Boot](u-boot-update)  
 [Using a vanilla Linux kernel with Intel Edison](vanilla)  
 [Enabling ACPI on Edison through U-Boot](acpi)  
