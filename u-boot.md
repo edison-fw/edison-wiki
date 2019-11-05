@@ -1,7 +1,7 @@
-#Intel Edison
+# Intel Edison
 
-##Using Intel's Stuff
-Best walk-through is [here](http://shawnhymel.com/585/creating-a-custom-linux-kernel-for-the-edison/)
+## Using Intel's Stuff
+Best walk-through is [here](https://shawnhymel.com/585/creating-a-custom-linux-kernel-for-the-edison/)
 
 ## Device Data
 
