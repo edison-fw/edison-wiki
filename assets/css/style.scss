@@ -3,11 +3,13 @@
 
 @import "{{ site.theme }}";
 header {
-  width: 200px;
+  width: 250px;
 }
 
 section {
-  width: 80%;
+  width: 100%;
+  float: none;
+  padding-left: 300px;
 }
 
 .wrapper {
