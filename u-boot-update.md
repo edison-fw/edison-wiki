@@ -1,4 +1,4 @@
-#U-Boot
+# U-Boot
 
 This page is about upgrading U-Boot on Intel Edison. The goal is to get Intel Edison supported by U-Boot out-of-the-box. We are anticipating Intel Edison support in **v2017.09** out-of-the-box.
 
@@ -30,7 +30,7 @@ First you need to prepare an image to be suitable for DFU. There are few options
 
 ### Option 1
 
-Installed **edison-v2017.03** (or later) or development version **v2017.03-rc1 (or later). Installing **edison-v2017.03 (or later) or development version **v2017.03-rc1 (or later).
+Installed **edison-v2017.03** (or later) or development version **v2017.03-rc1** (or later). Installing **edison-v2017.03** (or later) or development version **v2017.03-rc1** (or later).
 
 ```
   nothing special is required, there are patches that fixes alignment
@@ -38,7 +38,7 @@ Installed **edison-v2017.03** (or later) or development version **v2017.03-rc1 (
 
 ### Option 2
 
-Installed **v2014.04 or **edison-v2016.11, or **edison-v2017.01**. Installing **edison-v2017.03** (or later) or
+Installed **v2014.04** or **edison-v2016.11**, or **edison-v2017.01**. Installing **edison-v2017.03** (or later) or
 development version **v2017.03-rc1** (or later).
 
 ```
@@ -109,7 +109,7 @@ Hit any key to stop autoboot:  0
 =>
 ```
 
-###Step-by-step example of updating stock version
+### Step-by-step example of updating stock version
 
 After boot I have checked the version of U-Boot:
 
