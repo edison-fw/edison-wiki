@@ -7,7 +7,7 @@ As has been reported by Georgii Staroselskii:
 
 > I bumped into a very strange issue that I'm pretty sure you can just
 crack from the first look. Even though I have the kernel,
-[U-Boot](https://edison.internet-share.com/wiki/U-Boot) and
+[U-Boot](u-boot-update) and
 [meta-acpi](https://github.com/westeri/meta-acpi/) 
 layer checked out at the default branches I'm seeing this output:
 
@@ -44,8 +44,7 @@ provides.
 
 The problem is caused by the IFWI firmware providing the address range,
 and the address range varies between IFWI versions. A
-[U-Boot](https://edison.internet-share.com/wiki/U-Boot)[
-ASL fix (adding another resource in the _CRS table) sounds plausible.
+[U-Boot](u-boot-update) ASL fix (adding another resource in the _CRS table) sounds plausible.
 
 However, <https://git.yoctoproject.org/cgit/cgit.cgi/meta-intel-edison/log/utils/flash/ifwi/edison>
 shows only 3 revisions of IWFI have been released, of which only the
