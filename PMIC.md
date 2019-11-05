@@ -26,7 +26,7 @@ How the ADC interfaces with the CPU
 
 
  | Address | Name | Description | b7 | b6 | b5 | b4 | b3 | b2 | b1| b0 |
- |:--------|:-----|:------------|:---|:---|:---|:---|:---|:---|:--|:---|
+ |:--------|:-----|:------------|:--:|:--:|:--:|:--:|:--:|:--:|:-:|:--:|
  | 0x06 | ADCIRQ    | (defined but unused in original driver) |  ?| ? | ? | ? | ? | ? | ? | ? |
  | 0x11 | MADCIRQ   | IRQ mask ? | ? | ? | battery current/voltage ?| battery (what ?)| system temperature | battery temperature | ? | ? |
  | 0x0c | MIRQLVL1  | irq enable ? | ? | ? | ? | ADC (what ?) | ? | ? | ? | ? |
@@ -58,7 +58,7 @@ description we need to develop similar for Basin Cove.
 
 ### State of affairs
 
-[U-Boot](https://edison.internet-share.com/wiki/U-Boot)
+[U-Boot](u-boot-update)
 has a separate edison-acpi branch in my GitHub tree to
 provide additional AML code to support some devices. One of them is
 PMIC. Locally in my kernel tree (I'm going to publish the changes
