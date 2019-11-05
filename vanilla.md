@@ -9,12 +9,12 @@ features that [Ionic](https://edison.internet-share.com/wiki/Ionic)/[OpenWrt](ht
 The first step in porting Ionic/OpenWrt to the Intel®
 [Edison](https://edison.internet-share.com/wiki/Edison) is therefor getting a newer kernel running on the Edison. Searching Google, I came across this site:
 
-<http://habrahabr.ru/post/254247/>
+<https://habrahabr.ru/post/254247/>
 
 Unfortunately it is all in Russian --- of which I understand very little
 --- but with a little help from Google Translate it looked promising.
 
-The author, [Andy Shevchenko](http://habrahabr.ru/users/andy_shev/)
+The author, [Andy Shevchenko](https://habrahabr.ru/users/andy_shev/)
 have managed to boot the [Edison](https://edison.internet-share.com/wiki/Edison)
 using the latest vanilla Linux kernel without using any of the patches.
 
@@ -71,7 +71,7 @@ processors/cores available on the build system.
 ### 64-bit mode
 
 Intel Atom, which is installed on Intel Edison, is known x86_64 CPU.
-To enable 64-bit build in Linux kernel v4.4 [the patch](http://www.spinics.net/lists/kernel/msg2163592.html)[
+To enable 64-bit build in Linux kernel v4.4 [the patch](https://www.spinics.net/lists/kernel/msg2163592.html)[
 should be applied.
 
 ```
