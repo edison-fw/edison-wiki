@@ -63,10 +63,9 @@ When you get a **u-boot.bin** run the following command to get the image you fla
 There is [a script](https://gist.github.com/andy-shev/2c388310f2773ead647d9c1a3f1c813f) which allows to create a suitable U-Boot image for xFSTK and DFU including preset environment.
 
 ### known-bugs
-  * To enable DFU don't forget to change **mmc** to **raw** in the corresponding U-Boot environment variables. See [Issue
-    #3](https://github.com/01org/edison-u-boot/issues/3) as well.
+  * To enable DFU don't forget to change **mmc** to **raw** in the corresponding U-Boot environment variables. See [Issue #3](https://github.com/01org/edison-u-boot/issues/3) as well.
   * ~~GPT table when written by gpt command will make device unresponsive (recovery via xfstk), see [Issue #1](https://github.com/andy-shev/u-boot/issues/1) as well.~~ Solved (**Jan 31**).
-  * DFU timeout patch is absent, so if you use default bootcmd setting you have to press Ctrl+C manually each time it boots.
+  * ~~DFU timeout patch is absent, so if you use default bootcmd setting you have to press Ctrl+C manually each time it boots.~~ In v2020.07.
   * ~~Unclean build (last stage failed due to custom configuration options).~~ Got clean build for U-Boot today (**Jan 21**). Removed few patches from that BSP hell.
   * ~~Upstreaming patches. 11 patches has been sent upstream, 4 of them had already been applied (**Feb 1**4). It's only 10 patches left in the queue, where couple of them rather will be squashed (**Mar 1**). 5 (five) patches left in a queue (**May 10**).~~ Everything is in upstream in **v2017.09-rc1**.
 
