@@ -20,4 +20,4 @@ This README serves as the home page for this wiki. Please manually add a link to
 [Basin Cove PMIC investigation](PMIC)  
 [Edison/Arduino notes](arduino)  
 [Brillo provisioned Edisons](brillo-firmware)  
-
+[Running Edison firmware on Dell Venue 7 3740 HSPA+](edison-venue)
