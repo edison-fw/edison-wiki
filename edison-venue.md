@@ -1,6 +1,7 @@
 # Dell Venue 7 3740 HSPA+
 
-The Dell Venue 7 is a 7" 800x1280 Tablet with 16GB EMMC / 1G LPDDR3 and LTE radio with a Merrifield dual-core 1.6GHz.
+The Dell Venue 7 is a 7" 800x1280 Tablet with 16GB EMMC / 1G LPDDR3 and LTE
+radio with Intel Merrifield dual-core 1.6GHz.
 
 Dell provides images to root, unlock and unbrick as well as source files for the system image [here](https://opensource.dell.com/releases/Venue_8_3840_Merrifield/developer-edition/).
 
@@ -8,7 +9,10 @@ Dell provides images to root, unlock and unbrick as well as source files for the
 
 This document contain my notes on getting the Venue 7 to run Linux.
 
-Keep in mind that the approach taken here is backwards: Instead of carefully analyzing the hardware and the Dell provided sources, build ACPI tables and drivers into U-Boot and Linux, then iron out the bugs, here I attempt to start and the (wrong) end.
+Keep in mind that the approach taken here is backwards: Instead of
+carefully analyzing the hardware and the Dell provided sources, build
+ACPI tables and drivers into U-Boot and Linux, then iron out the bugs,
+here I attempt to start at the (wrong) end.
 
 Knowing that the SOC is similar to Edison's, quickly get Edison's U-Boot, kernel and rootfs running, fixing what is preventing us from booting only. This way we can get the tools to analyze the hardware further and we have a platform to port drivers one by one.
 
@@ -23,7 +27,7 @@ First the Venue 7 must be provisioned with a new firmware before U-Boot can be i
 
 During step 2 the partitioning of the EMMC is done. Here we add some modifications to make space for U-Boot's environment (env) partitions. Adding these partitions does not prevent Android from running.
 
-During step 3 we flash U-Boot instead of Android. In principle this should run U-Boot instead of Android and leave Fastboot operational. As it appears, trying to boot into Android will fail and fall back to Recovery while trying to boot into Fastboot will boot into U-Boot. So each time we need Fastboot we need to use Recovery to perform step 2 again. This is a little boring so another reason to get linux up as quickly as possible.
+During step 3 we flash U-Boot instead of Android. In principle this should run U-Boot instead of Android and leave Fastboot operational. As it appears, trying to boot into Android will fail and fall back to Recovery while trying to boot into Fastboot will boot into U-Boot. So each time we need Fastboot we need to use Recovery to perform step 2 again. This is a little boring so another reason to get Linux up as quickly as possible.
 
 Currently, inside U-Boot there are things that need to be entered through the console. One way would be to get network access into U-Boot (netconsole). In my case I chose to break the Venue slightly and attached a TTL-USB serial converter following any Shevchenko's instructions [here](https://andy-shev.dreamwidth.org/152335.html).
 
@@ -96,10 +100,12 @@ Currently, inside U-Boot there are things that need to be entered through the co
         #!/bin/bash
         
         xfstk-dldr-solo --gpflags 0x80000007 --fwdnx  fwr_dnx_PRQ_ww27_001.bin --fwimage IFWI_MERR_PRQ_UOS_TH2_YT2_ww27_001.bin
+
     in a directory holding also the files:
+
         fwr_dnx_PRQ_ww27_001.bin
         IFWI_MERR_PRQ_UOS_TH2_YT2_ww27_001.bin
-        
+
  7. Follow section **B. Rooting and bootloader unlocking process using OTA package - 1. enable Fastboot mode** by running `enable_fastboot.sh`
  8. Skip copying to the ROM “A195/OTA/YTD802A519600-
 f-2014-07-16-16_OSS.zip" to flash.
@@ -171,7 +177,7 @@ Yocto build U-Boot, U-Boot Env, Linux kernel and a `rootfs.`
         -do_partition_done=0
         +do_partition_done=1
         
-    To be able to access env from linux using `fw_printenv` change `fw_env.config`:
+    To be able to access env from Linux using `fw_printenv` change `fw_env.config`:
 
         -# On Edison, the u-boot environments are located on partitions 2 and 4 and both have a size of 64kB
         -/dev/mmcblk0p2		0x0000		0x10000
@@ -182,7 +188,9 @@ Yocto build U-Boot, U-Boot Env, Linux kernel and a `rootfs.`
 
  4. Build image as normal (`make image` followed by `make postbuild`)
 
-    It is probably a good idea (I did) to mount the resulting `edison-image-edison.btrfs` in `tmp/deploy/images/edison/` and change `/etc/fstab'
+    It is probably a good idea (I did) to mount the resulting
+    `edison-image-edison.btrfs` in `tmp/deploy/images/edison/`
+    and change `/etc/fstab`
 
         -/dev/disk/by-partlabel/home   /boot       btrfs		nofail,noatime,subvol=/@boot     1   1
         -/dev/disk/by-partlabel/home   /lib/modules    btrfs	nofail,x-systemd.required-by=systemd-modules-load.service,LazyUnmount=true,noatime,subvol=/@modules  1       1
@@ -200,7 +208,8 @@ Use `adb push` to send to `/factory`:
 
 Then use `adb shell` to go into the tablet and `mv` `bzImage` and `initrd` into a directory `/boot`.
 
-Then `cp` `edison-btrfs.bin` to the both env partitions
+Then `cp` `edison-btrfs.bin` to the both env partitions:
+
         cp edison-btrfs.bin /dev/disk/.../u-boot-env0
         cp edison-btrfs.bin /dev/disk/.../u-boot-env1
 
@@ -212,9 +221,9 @@ Use `adb push` to send to `/cache`:
 
 Then use `adb shell` to go into the tablet and `umount /data`.
 
-Then `cp` `edison-image-edison.btrfs` to the data partition
-        cp edison-btrfs.bin /dev/disk/.../data
+Then `cp` `edison-image-edison.btrfs` to the data partition:
 
+        cp edison-btrfs.bin /dev/disk/.../data
 
 ### Overwrite Android following "C. Build the kernel image from the kernel sources and flash kernel image - 2. Flash boot.img and droidboot.img"
 
@@ -237,7 +246,7 @@ Instead, push the buttons to go to Fastboot. Unexpectedly (possibly to incorrect
 
 Using the serial console, you can modify env, to load kernel and initrd from partition 3 (factory) and modify kernel command line to find `rootfs` on partition 11. Run `saveenv`.
 
-Then, finally, run `run do_boot` and linux will start.
+Then, finally, run `run do_boot` and Linux will start.
 
 ### Going back to Android.
 
@@ -249,13 +258,15 @@ Go into Recovery and  choose **sideload from adb**. Then from the directory hold
 
 ## What works in Linux.
 
-Not so much, the acpi tables don't match the hardware, some drivers are missing. Bluetooth, Wifi is not working. HThe SD card is not accessible. But fortunately USB is working in device mode, so ethernet over USB (CDC), is working, sound over USB, etc. as usuals on Intel Edison.
+Not so much, the ACPI tables don't match the hardware, some drivers are
+missing. Bluetooth, WiFi are not working. The SD card is not accessible.
+But fortunately USB is working in device mode, so Ethernet over USB (CDC),
+is working, sound over USB, etc. as usually on Intel Edison.
 
 To make networking work, see [Gadget](https://edison-fw.github.io/meta-intel-edison/4.2-networking.html#gadget).
 
-### devices
+### PCI devices
 ```
-root@venue:~# lspci
 00:00.0 Host bridge: Intel Corporation Device 1170 (rev 01)
 00:01.0 SD Host controller: Intel Corporation Merrifield SD/SDIO/eMMC Controller (rev 01)
 00:01.2 SD Host controller: Intel Corporation Merrifield SD/SDIO/eMMC Controller (rev 01)
@@ -291,9 +302,8 @@ root@venue:~# lspci
 00:17.0 System peripheral: Intel Corporation Merrifield Serial IO PWM Controller (rev 01)
 00:18.0 Display controller: Intel Corporation Device 11a6 (rev 01)
 ```
-### modules
+### Linux kernel modules (loaded at boot time)
 ```
-root@venue:~# lsmod
 Module                  Size  Used by
 iptable_nat            16384  0
 snd_sof_nocodec        16384  0
@@ -344,18 +354,17 @@ zlib_deflate           28672  1 btrfs
 raid6_pq              118784  1 btrfs
 zstd_compress         299008  1 btrfs
 ```
-### partitions
+### Disk (eMMC) partitions
 ```
-root@venue:~# parted
 GNU Parted 3.4
 Using /dev/mmcblk0
 Welcome to GNU Parted! Type 'help' to view a list of commands.
-(parted) print                                                            
+(parted) print
 Model: MMC HAG2e (sd/mmc)
 Disk /dev/mmcblk0: 15.8GB
 Sector size (logical/physical): 512B/512B
 Partition Table: gpt
-Disk Flags: 
+Disk Flags:
 
 Number  Start   End     Size    File system  Name         Flags
  1      17.4kB  268MB   268MB                reserved     msftdata
@@ -372,7 +381,6 @@ Number  Start   End     Size    File system  Name         Flags
 ```
 ### dmesg
 ```
-root@venue:~# dmesg                
 Linux version 5.16.0-rc8-edison-acpi-standard (oe-user@oe-host) (x86_64-poky-linux-gcc (GCC) 10.2.0, GNU ld (GNU Binutils) 2.36.1.20210209) #1 SMP PREEMPT Sun Jan 2 22:23:25 UTC 2022
 Command line: quiet root=/dev/mmcblk0p11 rootflags=compress=lzo rootfstype=btrfs console=ttyS2,115200n8 earlyprintk=ttyS2,115200n8,keep loglevel=4 systemd.unit=multi-user.target
 x86/fpu: x87 FPU will use FXSAVE
@@ -1378,7 +1386,3 @@ EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: discard. Q
 EXT4-fs (mmcblk0p9): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
 EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
 ```
-
-
-
-
